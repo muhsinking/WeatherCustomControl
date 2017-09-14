@@ -113,6 +113,7 @@
   <ItemGroup>
     <Content Include="Assets\jsontest.txt" />
     <Content Include="Assets\simple_weather_icons_partly_cloudy.png" />
+    <Content Include="Assets\volo_landscape.jpg" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
