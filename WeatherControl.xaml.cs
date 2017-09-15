@@ -44,9 +44,29 @@ namespace WeatherCustomControl
 
             int tempInt = (int)kelvinToFahrenheit(currentWeather.main.temp);
             Temp.Text = tempInt.ToString() + "°F";
-
             City.Text = currentWeather.name;
             Precipitation.Text = "Humidity: " + currentWeather.main.humidity.ToString() + "%";
+            //UpdateIcon(currentWeather.weather[0]);
+        }
+
+
+        // Update the icon photo based on the icon ID
+        /* 
+         * TODO look up icon source with hashset
+         * TODO filename convention: 
+         * 01   icon-clear.png
+         * 02   icon-fewclouds
+         * 03   icon-scattered-clouds
+         * 04   icon-broken-clouds
+         * 09   icon-shower-rain
+         * 10   icon-rain
+         * 11   icon-thunderstorm
+         * 13   icon-snow
+         * 50   icon-mist
+        */
+
+        public void UpdateIcon(string iconID)
+        {
 
         }
 
@@ -84,6 +104,15 @@ namespace WeatherCustomControl
 
                 return json_data;
             }
+        }
+
+        // Update display when weather icon is clicked
+        private void IconClick(object sender, RoutedEventArgs e)
+        {
+            Temp.Text = "--";
+            //City.Text = "--";
+            Precipitation.Text = "--";
+            UpdateDisplay();
         }
     }
 }

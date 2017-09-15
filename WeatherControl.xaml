@@ -9,19 +9,65 @@
     d:DesignHeight="300"
     d:DesignWidth="500">
 
-    <Grid Height="80" Width="400">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+                    <AcrylicBrush x:Key="IconAcrylicBrush"
+                BackgroundSource="Backdrop"
+                TintColor="#007FF5"
+                TintOpacity="0.6"
+                FallbackColor="#007FF5"/>
+
+                    <AcrylicBrush x:Key="InfoAcrylicBrush"
+                BackgroundSource="Backdrop"
+                TintColor="#002041"
+                TintOpacity="0.6"
+                FallbackColor="#002041"/>
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="HighContrast">
+                    <SolidColorBrush x:Key="IconAcrylicBrush"
+                Color="{ThemeResource SystemColorWindowColor}"/>
+
+                    <SolidColorBrush x:Key="InfoAcrylicBrush"
+                Color="{ThemeResource SystemColorWindowColor}"/>
+                </ResourceDictionary>
+
+                <ResourceDictionary x:Key="Light">
+                    <AcrylicBrush x:Key="IconAcrylicBrush"
+                BackgroundSource="Backdrop"
+                TintColor="#007FF5"
+                TintOpacity="0.6"
+                FallbackColor="#007FF5"/>
+                    
+                    <AcrylicBrush x:Key="InfoAcrylicBrush"
+                BackgroundSource="Backdrop"
+                TintColor="#002041"
+                TintOpacity="0.6"
+                FallbackColor="#002041"/>
+                </ResourceDictionary>
+
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid Height="90" Width="400" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Background="Teal" Margin="0,0,3,0"></Border>
-
-        <Border Grid.Column="1" Grid.ColumnSpan="2" Background="LightSeaGreen"></Border>
-
-        
+        <Border Grid.Column="0" Margin="0,0,3,0" Background="{StaticResource IconAcrylicBrush}"></Border>
         <Image Grid.Column="0" Source="Assets/simple_weather_icons_partly_cloudy.png" Margin="10"/>
+
+        <Button Height="90" Width="100" Grid.Column="0" Margin="0,0,3,0" Style="{StaticResource ButtonRevealStyle}" Background="#00FFFFFF" Click="IconClick"/>
+
+        <Border Grid.Column="1" Grid.ColumnSpan="2"  Background="{StaticResource InfoAcrylicBrush}"></Border>
+
+        <!--<Button Grid.Column="0" ></Button>-->
+        
 
         <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock x:Name="Temp" Text="--"  Foreground="White" />
