@@ -16,14 +16,20 @@
                     <AcrylicBrush x:Key="IconAcrylicBrush"
                 BackgroundSource="Backdrop"
                 TintColor="#007FF5"
-                TintOpacity="0.6"
+                TintOpacity="0.4"
                 FallbackColor="#007FF5"/>
 
                     <AcrylicBrush x:Key="InfoAcrylicBrush"
                 BackgroundSource="Backdrop"
                 TintColor="#002041"
-                TintOpacity="0.6"
+                TintOpacity="0.4"
                 FallbackColor="#002041"/>
+
+                    <AcrylicBrush x:Key="OptionsAcrylicBrush"
+                BackgroundSource="Backdrop"
+                TintColor="Gray"
+                TintOpacity="0.4"
+                FallbackColor="Gray"/>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="HighContrast">
@@ -32,40 +38,47 @@
 
                     <SolidColorBrush x:Key="InfoAcrylicBrush"
                 Color="{ThemeResource SystemColorWindowColor}"/>
+
+                    <SolidColorBrush x:Key="OptionsAcrylicBrush"
+                Color="{ThemeResource SystemColorWindowColor}"/>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="Light">
                     <AcrylicBrush x:Key="IconAcrylicBrush"
                 BackgroundSource="Backdrop"
                 TintColor="#007FF5"
-                TintOpacity="0.6"
+                TintOpacity="0.4"
                 FallbackColor="#007FF5"/>
                     
                     <AcrylicBrush x:Key="InfoAcrylicBrush"
                 BackgroundSource="Backdrop"
                 TintColor="#002041"
-                TintOpacity="0.6"
+                TintOpacity="0.4"
                 FallbackColor="#002041"/>
+
+                    <AcrylicBrush x:Key="OptionsAcrylicBrush"
+                BackgroundSource="Backdrop"
+                TintColor="Gray"
+                TintOpacity="0.4"
+                FallbackColor="Gray"/>
                 </ResourceDictionary>
 
             </ResourceDictionary.ThemeDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
 
-    <Grid Height="90" Width="400" >
+    <Grid Height="90" Width="420" >
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Border x:Name="IconBorder" Grid.Column="0" Margin="0,0,3,0" Background="{StaticResource IconAcrylicBrush}"></Border>
-        <Image x:Name="IconImage" Grid.Column="0" Margin="10"/>
-
-        <Button x:Name="IconButton" Height="90" Width="97" Grid.Column="0" Margin="0,0,3,0" Style="{StaticResource ButtonRevealStyle}" Background="#00FFFFFF" Click="IconClick"
-                ToolTipService.ToolTip="Update" ToolTipService.Placement="Top"/>
-
-        <Border Grid.Column="1" Grid.ColumnSpan="2"  Background="{StaticResource InfoAcrylicBrush}"></Border>
+        
+        
+        
+        <Border x:Name="InfoBorder" Grid.Column="1" Grid.ColumnSpan="2"  Background="{StaticResource InfoAcrylicBrush}"></Border>
 
         <StackPanel Margin="30,0,0,0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
             <TextBlock x:Name="Temp" Text="-----"  Foreground="White" Margin="3" />
@@ -77,6 +90,20 @@
             <TextBlock  x:Name="City" Text="-----"  Foreground="White" TextAlignment="Left" Margin="3"/>
             <TextBlock x:Name="Date" Text="-----" Foreground="White" Margin="3"/>
         </StackPanel>
+
+        <Grid x:Name="OptionsGrid" Grid.Column="3">
+            <Border x:Name="OptionsBorder" Background="{StaticResource OptionsAcrylicBrush}"></Border>
+            <Image x:Name="OptionsIcon" Source="Assets/options-icon.png" Grid.Column="0" Margin="2"/>
+            <Button x:Name="OptionsButton" Height="90" Width="25" Background="#00FFFFFF" Click="IconClick" Style="{StaticResource ButtonRevealStyle}"
+                ToolTipService.ToolTip="Options" ToolTipService.Placement="Top"/>
+        </Grid>
+
+        <Grid x:Name="IconGrid" Grid.Column="0">
+            <Border x:Name="IconBorder" Margin="0,0,0,0" Background="{StaticResource IconAcrylicBrush}"></Border>
+            <Image x:Name="IconImage" Margin="10"/>
+            <Button x:Name="IconButton" Height="90" Width="100" Margin="0,0,0,0" Style="{StaticResource ButtonRevealStyle}" Background="#00FFFFFF" Click="IconClick"
+                ToolTipService.ToolTip="Update" ToolTipService.Placement="Top"/>
+        </Grid>
 
     </Grid>
 </UserControl>

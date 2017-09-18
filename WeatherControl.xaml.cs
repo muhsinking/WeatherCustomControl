@@ -21,6 +21,7 @@ using System.Threading.Tasks;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.ComponentModel;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -31,31 +32,37 @@ namespace WeatherCustomControl
 
     public sealed partial class WeatherControl : UserControl
     {
-        public static readonly DependencyProperty ZipCodeProperty = DependencyProperty.Register(
-            "ZipCode",
-            typeof(string),
-            typeof(WeatherControl),
-            new PropertyMetadata("94040")
-        );
-
-        public string ZipCode
-        {
-            get { return (string)GetValue(ZipCodeProperty); }
-            set { SetValue(ZipCodeProperty, value); }
-        }
-
         private readonly string APIKEY = "ac0cb38f985c1560e474bfab1f947b71";
         private readonly string URLPREFIX = "http://api.openweathermap.org/data/2.5/weather?";
 
+        public String ZipCode { get; set; }
+        public bool UnitsInCelcius { get; set; }
+
+        //public static readonly DependencyProperty ZipCodeProperty = DependencyProperty.Register(
+        //    "ZipCode",
+        //    typeof(String),
+        //    typeof(WeatherControl),
+        //    new PropertyMetadata("98052")
+        //);
+
+        //// ZipCode property wrapper
+        //public String ZipCode
+        //{
+        //    get { return (String)GetValue(ZipCodeProperty); }
+        //    set { SetValue(ZipCodeProperty, value); }
+        //}
+
         public WeatherControl()
         {
+            ZipCode = "98052";
+            UnitsInCelcius = true;
             UpdateDisplay();
             this.InitializeComponent();
         }
 
         private bool IsUSorCanadianZipCode(string zipCode)
         {
-            if (string.IsNullOrEmpty(zipCode)) return false;
+            if (String.IsNullOrEmpty(zipCode)) return false;
             bool isValidUsOrCanadianZip = false;
             string pattern = @"^\d{5}-\d{4}|\d{5}|[A-Z]\d[A-Z] \d[A-Z]\d$";
             Regex regex = new Regex(pattern);
@@ -80,8 +87,18 @@ namespace WeatherCustomControl
 
                 Debug.WriteLine(currentWeather.weather[0].description);
 
-                int tempInt = (int)kelvinToFahrenheit(currentWeather.main.temp);
-                Temp.Text = tempInt.ToString() + "°F";
+                int temperature;
+                if (UnitsInCelcius)
+                {
+                    temperature = (int)kelvinToCelcius(currentWeather.main.temp);
+                    Temp.Text = temperature.ToString() + "° C";
+                }
+                else
+                {
+                    temperature = (int)kelvinToFahrenheit(currentWeather.main.temp);
+                    Temp.Text = temperature.ToString() + "° F";
+                }
+                
                 City.Text = currentWeather.name;
                 Humidity.Text = "Humidity: " + currentWeather.main.humidity.ToString() + "%";
                 UpdateIcon("http://openweathermap.org/img/w/" + currentWeather.weather[0].icon + ".png");
@@ -148,10 +165,6 @@ namespace WeatherCustomControl
                     json_data = await httpResponse.Content.ReadAsStringAsync();
                 }
                 catch (Exception) { }
-
-                Debug.WriteLine("\n\n\n");
-                Debug.WriteLine(json_data);
-                Debug.WriteLine("\n\n\n");
 
                 return json_data;
             }
