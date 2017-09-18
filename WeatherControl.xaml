@@ -59,26 +59,23 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" Margin="0,0,3,0" Background="{StaticResource IconAcrylicBrush}"></Border>
-        <Image Grid.Column="0" Source="Assets/simple_weather_icons_partly_cloudy.png" Margin="10"/>
+        <Border x:Name="IconBorder" Grid.Column="0" Margin="0,0,3,0" Background="{StaticResource IconAcrylicBrush}"></Border>
+        <Image x:Name="IconImage" Grid.Column="0" Margin="10"/>
 
-        <Button Height="90" Width="100" Grid.Column="0" Margin="0,0,3,0" Style="{StaticResource ButtonRevealStyle}" Background="#00FFFFFF" Click="IconClick"/>
+        <Button x:Name="IconButton" Height="90" Width="97" Grid.Column="0" Margin="0,0,3,0" Style="{StaticResource ButtonRevealStyle}" Background="#00FFFFFF" Click="IconClick"
+                ToolTipService.ToolTip="Update" ToolTipService.Placement="Top"/>
 
         <Border Grid.Column="1" Grid.ColumnSpan="2"  Background="{StaticResource InfoAcrylicBrush}"></Border>
 
-        <!--<Button Grid.Column="0" ></Button>-->
-        
-
-        <StackPanel Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock x:Name="Temp" Text="--"  Foreground="White" />
-            <TextBlock x:Name="Precipitation" Text="--"  Foreground="White"/>
+        <StackPanel Margin="30,0,0,0" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <TextBlock x:Name="Temp" Text="-----"  Foreground="White" Margin="3" />
+            <TextBlock x:Name="Humidity" Text="-----"  Foreground="White" Margin="3"/>
 
         </StackPanel>
 
-        <StackPanel Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock x:Name="City" Text="--"  Foreground="White" />
-            <TextBlock x:Name="Date" Text="September 14" Foreground="White"/>
-
+        <StackPanel Margin="30,0,0,0" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Left">
+            <TextBlock  x:Name="City" Text="-----"  Foreground="White" TextAlignment="Left" Margin="3"/>
+            <TextBlock x:Name="Date" Text="-----" Foreground="White" Margin="3"/>
         </StackPanel>
 
     </Grid>

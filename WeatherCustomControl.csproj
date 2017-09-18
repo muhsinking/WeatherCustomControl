@@ -111,7 +111,7 @@
     <None Include="WeatherCustomControl_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\jsontest.txt" />
+    <Content Include="Assets\no-internet-3.png" />
     <Content Include="Assets\simple_weather_icons_partly_cloudy.png" />
     <Content Include="Assets\volo_landscape.jpg" />
     <Content Include="Properties\Default.rd.xml" />

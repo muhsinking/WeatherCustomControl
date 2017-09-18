@@ -9,7 +9,7 @@
 
     <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-        <Image Source="Assets/volo_landscape.jpg"/>
-        <local:WeatherControl x:Name="MyWeatherControl"></local:WeatherControl>
+        <!--<Image Source="Assets/volo_landscape.jpg"/>-->
+        <local:WeatherControl x:Name="MyWeatherControl" ZipCode="19320"></local:WeatherControl>
     </Grid>
 </Page>
