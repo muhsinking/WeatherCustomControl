@@ -27,9 +27,6 @@ using System.ComponentModel;
 
 namespace WeatherCustomControl
 {
-
-
-
     public sealed partial class WeatherControl : UserControl
     {
         private readonly string APIKEY = "ac0cb38f985c1560e474bfab1f947b71";
@@ -37,6 +34,7 @@ namespace WeatherCustomControl
 
         public String ZipCode { get; set; }
         public bool UnitsInCelcius { get; set; }
+        public double CurrentTemperatureKelvin { get; set; }
 
         //public static readonly DependencyProperty ZipCodeProperty = DependencyProperty.Register(
         //    "ZipCode",
@@ -87,18 +85,10 @@ namespace WeatherCustomControl
 
                 Debug.WriteLine(currentWeather.weather[0].description);
 
-                int temperature;
-                if (UnitsInCelcius)
-                {
-                    temperature = (int)kelvinToCelcius(currentWeather.main.temp);
-                    Temp.Text = temperature.ToString() + "° C";
-                }
-                else
-                {
-                    temperature = (int)kelvinToFahrenheit(currentWeather.main.temp);
-                    Temp.Text = temperature.ToString() + "° F";
-                }
-                
+
+                CurrentTemperatureKelvin = currentWeather.main.temp;
+                SetDisplayTemperature();
+
                 City.Text = currentWeather.name;
                 Humidity.Text = "Humidity: " + currentWeather.main.humidity.ToString() + "%";
                 UpdateIcon("http://openweathermap.org/img/w/" + currentWeather.weather[0].icon + ".png");
@@ -113,6 +103,21 @@ namespace WeatherCustomControl
             DateTime currentDate = DateTime.Now;
             string longMonthName = currentDate.ToString("MMMM", new CultureInfo("en-us"));
             Date.Text = longMonthName + " " + currentDate.Day;
+        }
+
+        public void SetDisplayTemperature()
+        {
+            int displayTemperature;
+            if (UnitsInCelcius)
+            {
+                displayTemperature = (int)kelvinToCelcius(CurrentTemperatureKelvin);
+                Temp.Text = displayTemperature.ToString() + "° C";
+            }
+            else
+            {
+                displayTemperature = (int)kelvinToFahrenheit(CurrentTemperatureKelvin);
+                Temp.Text = displayTemperature.ToString() + "° F";
+            }
         }
 
 
@@ -148,6 +153,16 @@ namespace WeatherCustomControl
             return kelvin - 272.15;
         }
 
+        public double fahrenheitToCelcius(double fahrenheit)
+        {
+            return (fahrenheit - 32) / 1.8;
+        }
+
+        public double celciusToFahrenheit(double celcius)
+        {
+            return (celcius * 1.8) + 32;
+        }
+
         private async Task<string> DownloadWeatherDataAsync(string url)
         {
             using (var h = new HttpClient())
@@ -172,6 +187,31 @@ namespace WeatherCustomControl
 
         // Update display when weather icon is clicked
         private void IconClick(object sender, RoutedEventArgs e)
+        {
+            Temp.Text = "-----";
+            Humidity.Text = "-----";
+            UpdateDisplay();
+        }
+
+        private void OptionsClick(object sender, RoutedEventArgs e)
+        {
+            InfoSplitView.IsPaneOpen = !InfoSplitView.IsPaneOpen;
+            UpdateDisplay();
+        }
+
+        private void FahrenheitChecked(object sender, RoutedEventArgs e)
+        {
+            UnitsInCelcius = false;
+            SetDisplayTemperature();
+        }
+
+        private void CelciusChecked(object sender, RoutedEventArgs e)
+        {
+            UnitsInCelcius = true;
+            SetDisplayTemperature();
+        }
+
+        private void InfoSplitView_PaneClosed(SplitView sender, object args)
         {
             Temp.Text = "-----";
             Humidity.Text = "-----";
