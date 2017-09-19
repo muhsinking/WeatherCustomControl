@@ -36,20 +36,6 @@ namespace WeatherCustomControl
         public bool UnitsInCelcius { get; set; }
         public double CurrentTemperatureKelvin { get; set; }
 
-        //public static readonly DependencyProperty ZipCodeProperty = DependencyProperty.Register(
-        //    "ZipCode",
-        //    typeof(String),
-        //    typeof(WeatherControl),
-        //    new PropertyMetadata("98052")
-        //);
-
-        //// ZipCode property wrapper
-        //public String ZipCode
-        //{
-        //    get { return (String)GetValue(ZipCodeProperty); }
-        //    set { SetValue(ZipCodeProperty, value); }
-        //}
-
         public WeatherControl()
         {
             ZipCode = "98052";
