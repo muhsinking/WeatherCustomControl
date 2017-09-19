@@ -29,8 +29,8 @@ namespace WeatherCustomControl
 {
     public sealed partial class WeatherControl : UserControl
     {
-        private readonly string APIKEY = "ac0cb38f985c1560e474bfab1f947b71";
-        private readonly string URLPREFIX = "http://api.openweathermap.org/data/2.5/weather?";
+        private readonly String APIKEY = "ac0cb38f985c1560e474bfab1f947b71";
+        private readonly String URLPREFIX = "http://api.openweathermap.org/data/2.5/weather?";
 
         public String ZipCode { get; set; }
         public bool UnitsInCelcius { get; set; }
@@ -58,11 +58,11 @@ namespace WeatherCustomControl
             this.InitializeComponent();
         }
 
-        private bool IsUSorCanadianZipCode(string zipCode)
+        private bool IsUSorCanadianZipCode(String zipCode)
         {
             if (String.IsNullOrEmpty(zipCode)) return false;
             bool isValidUsOrCanadianZip = false;
-            string pattern = @"^\d{5}-\d{4}|\d{5}|[A-Z]\d[A-Z] \d[A-Z]\d$";
+            String pattern = @"^\d{5}-\d{4}|\d{5}|[A-Z]\d[A-Z] \d[A-Z]\d$";
             Regex regex = new Regex(pattern);
             return isValidUsOrCanadianZip = regex.IsMatch(zipCode);
         }
@@ -74,7 +74,7 @@ namespace WeatherCustomControl
                 throw new Exception("Invalid zip code: a valid US zip code must be provided");
             }
             
-            string url = URLPREFIX + "zip=" + ZipCode + ",us&appid=" + APIKEY;
+            String url = URLPREFIX + "zip=" + ZipCode + ",us&appid=" + APIKEY;
 
             CurrentWeatherInfo currentWeather;
             String json = await DownloadWeatherDataAsync(url);
@@ -101,7 +101,7 @@ namespace WeatherCustomControl
             }
 
             DateTime currentDate = DateTime.Now;
-            string longMonthName = currentDate.ToString("MMMM", new CultureInfo("en-us"));
+            String longMonthName = currentDate.ToString("MMMM", new CultureInfo("en-us"));
             Date.Text = longMonthName + " " + currentDate.Day;
         }
 
@@ -136,7 +136,7 @@ namespace WeatherCustomControl
          * 50   icon-mist
         */
 
-        public void UpdateIcon(string imageURI)
+        public void UpdateIcon(String imageURI)
         {
             var bitmapImage = new BitmapImage();
             bitmapImage.UriSource = new Uri(imageURI);
@@ -192,11 +192,14 @@ namespace WeatherCustomControl
             Humidity.Text = "-----";
             UpdateDisplay();
         }
-
+        
         private void OptionsClick(object sender, RoutedEventArgs e)
         {
+            if (!InfoSplitView.IsPaneOpen)
+            {
+                ZipCodeTextBox.Text = ZipCode;
+            }
             InfoSplitView.IsPaneOpen = !InfoSplitView.IsPaneOpen;
-            UpdateDisplay();
         }
 
         private void FahrenheitChecked(object sender, RoutedEventArgs e)
@@ -213,8 +216,7 @@ namespace WeatherCustomControl
 
         private void InfoSplitView_PaneClosed(SplitView sender, object args)
         {
-            Temp.Text = "-----";
-            Humidity.Text = "-----";
+            this.ZipCode = ZipCodeTextBox.Text;
             UpdateDisplay();
         }
     }

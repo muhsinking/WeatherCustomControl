@@ -103,7 +103,7 @@
                     
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="120" Margin="10,0,10,0">
                         <TextBlock>Zip code</TextBlock>
-                        <TextBox x:Name="ZipCodeTextBox"></TextBox>
+                        <TextBox x:Name="ZipCodeTextBox" Text="---"></TextBox>
                     </StackPanel>
                     
                     <Grid x:Name="OptionsButtonGrid" HorizontalAlignment="Right" Width="20">
