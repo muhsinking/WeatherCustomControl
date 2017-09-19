@@ -10,6 +10,6 @@
     <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">-->
     <Grid Background="{ThemeResource SystemControlAcrylicWindowBrush}">
         <!--<Image Source="Assets/volo_landscape.jpg"/>-->
-        <local:WeatherControl x:Name="MyWeatherControl" ZipCode="98052" HorizontalAlignment="Center"></local:WeatherControl>
+        <local:WeatherControl x:Name="MyWeatherControl" HorizontalAlignment="Center"></local:WeatherControl>
     </Grid>
 </Page>

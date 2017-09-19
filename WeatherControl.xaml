@@ -15,21 +15,21 @@
                 <ResourceDictionary x:Key="Default">
                     <AcrylicBrush x:Key="IconAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#007FF5"
+                TintColor="#002041"
                 TintOpacity="0.4"
                 FallbackColor="#007FF5"/>
 
                     <AcrylicBrush x:Key="InfoAcrylicBrush"
                 BackgroundSource="Backdrop"
                 TintColor="#002041"
-                TintOpacity="0.4"
+                TintOpacity="0.6"
                 FallbackColor="#002041"/>
 
                     <AcrylicBrush x:Key="OptionsAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="Gray"
+                TintColor="#002041"
                 TintOpacity="0.4"
-                FallbackColor="Gray"/>
+                FallbackColor="#002041"/>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="HighContrast">
@@ -46,21 +46,21 @@
                 <ResourceDictionary x:Key="Light">
                     <AcrylicBrush x:Key="IconAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#007FF5"
+                TintColor="#002041"
                 TintOpacity="0.4"
-                FallbackColor="#007FF5"/>
+                FallbackColor="#002041"/>
                     
                     <AcrylicBrush x:Key="InfoAcrylicBrush"
                 BackgroundSource="Backdrop"
                 TintColor="#002041"
-                TintOpacity="0.4"
+                TintOpacity="0.6"
                 FallbackColor="#002041"/>
 
                     <AcrylicBrush x:Key="OptionsAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="Gray"
+                TintColor="#002041"
                 TintOpacity="0.4"
-                FallbackColor="Gray"/>
+                FallbackColor="#002041"/>
                 </ResourceDictionary>
 
             </ResourceDictionary.ThemeDictionaries>
@@ -75,7 +75,7 @@
                 ToolTipService.ToolTip="Update" ToolTipService.Placement="Top"/>
         </Grid>
 
-        <SplitView x:Name="InfoSplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" CompactPaneLength="20" OpenPaneLength="310" PanePlacement="Right" PaneClosed="InfoSplitView_PaneClosed">
+        <SplitView x:Name="InfoSplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" CompactPaneLength="20" OpenPaneLength="300" PanePlacement="Right" PaneClosed="InfoSplitView_PaneClosed">
             <SplitView.Content>
                 <StackPanel Orientation="Horizontal" Background="{StaticResource InfoAcrylicBrush}" HorizontalAlignment="Left">
                 <Border x:Name="InfoBorder" Background="{StaticResource InfoAcrylicBrush}"></Border>
@@ -92,29 +92,27 @@
                 </StackPanel>
                 </StackPanel>
             </SplitView.Content>
+
             <SplitView.Pane>
-                
                 <StackPanel Orientation="Horizontal" Background="{StaticResource OptionsAcrylicBrush}" HorizontalAlignment="Right" Width="300">
 
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="120" Margin="10,0,10,0">
-                        <RadioButton Content="Celcius" Checked="CelciusChecked" IsChecked="True"/>
-                        <RadioButton Content="Fahrenheit" Checked="FahrenheitChecked"/>
+                        <RadioButton Content="Celcius" Checked="CelciusChecked" IsChecked="True" Margin="10,0,0,0"/>
+                        <RadioButton Content="Fahrenheit" Checked="FahrenheitChecked"  Margin="10,0,0,0"/>
                     </StackPanel>
-                    
+
                     <StackPanel Orientation="Vertical" VerticalAlignment="Center" Width="120" Margin="10,0,10,0">
-                        <TextBlock>Zip code</TextBlock>
-                        <TextBox x:Name="ZipCodeTextBox" Text="---"></TextBox>
+                        <TextBlock Text="Zip code"  Margin="5"/>
+                        <TextBox x:Name="ZipCodeTextBox" Text="---" />
                     </StackPanel>
-                    
+
                     <Grid x:Name="OptionsButtonGrid" HorizontalAlignment="Right" Width="20">
                         <Image x:Name="OptionsIcon" Source="Assets/options-icon.png" Grid.Column="0" Margin="2"/>
-                        <Button x:Name="OptionsButton" Height="90" Width="25" Background="#00FFFFFF" 
+                        <Button x:Name="OptionsButton" Height="90" Width="20" Background="#00FFFFFF" 
                                 Click="OptionsClick" Style="{StaticResource ButtonRevealStyle}"
-                                ToolTipService.ToolTip="Options" ToolTipService.Placement="Top"/>
+                                ToolTipService.ToolTip="Options" ToolTipService.Placement="Top" Margin="0,0,0,0"/>
                     </Grid>
-                    
                 </StackPanel>
-                
             </SplitView.Pane>
         </SplitView>
 

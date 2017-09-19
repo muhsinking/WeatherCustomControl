@@ -71,7 +71,8 @@ namespace WeatherCustomControl
         {
             if (!IsUSorCanadianZipCode(ZipCode))
             {
-                throw new Exception("Invalid zip code: a valid US zip code must be provided");
+                //throw new Exception("Invalid zip code: a valid US zip code must be provided");
+                IconImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/no-internet-3.png"));
             }
             
             String url = URLPREFIX + "zip=" + ZipCode + ",us&appid=" + APIKEY;
@@ -111,12 +112,12 @@ namespace WeatherCustomControl
             if (UnitsInCelcius)
             {
                 displayTemperature = (int)kelvinToCelcius(CurrentTemperatureKelvin);
-                Temp.Text = displayTemperature.ToString() + "° C";
+                Temp.Text = displayTemperature.ToString() + " °C";
             }
             else
             {
                 displayTemperature = (int)kelvinToFahrenheit(CurrentTemperatureKelvin);
-                Temp.Text = displayTemperature.ToString() + "° F";
+                Temp.Text = displayTemperature.ToString() + " °F";
             }
         }
 
@@ -216,6 +217,9 @@ namespace WeatherCustomControl
 
         private void InfoSplitView_PaneClosed(SplitView sender, object args)
         {
+            Temp.Text = "-----";
+            Humidity.Text = "-----";
+            City.Text = "-----";
             this.ZipCode = ZipCodeTextBox.Text;
             UpdateDisplay();
         }
