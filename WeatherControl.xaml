@@ -78,18 +78,18 @@
         <SplitView x:Name="InfoSplitView" DisplayMode="CompactOverlay" IsPaneOpen="False" CompactPaneLength="20" OpenPaneLength="300" PanePlacement="Right" PaneClosed="InfoSplitView_PaneClosed">
             <SplitView.Content>
                 <StackPanel Orientation="Horizontal" Background="{StaticResource InfoAcrylicBrush}" HorizontalAlignment="Left">
-                <Border x:Name="InfoBorder" Background="{StaticResource InfoAcrylicBrush}"></Border>
+                    <Border x:Name="InfoBorder" Background="{StaticResource InfoAcrylicBrush}"></Border>
 
-                <StackPanel Margin="30,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" >
-                    <TextBlock x:Name="Temp" Text="-----"  Foreground="White" Margin="3" />
-                    <TextBlock x:Name="Humidity" Text="-----"  Foreground="White" Margin="3"/>
+                    <StackPanel Margin="30,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120" >
+                        <TextBlock x:Name="Temp" Text="-----"  Foreground="White" Margin="3" />
+                        <TextBlock x:Name="Humidity" Text="-----"  Foreground="White" Margin="3"/>
 
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Margin="30,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120">
-                    <TextBlock  x:Name="City" Text="-----"  Foreground="White" TextAlignment="Left" Margin="3"/>
-                    <TextBlock x:Name="Date" Text="-----" Foreground="White" Margin="3"/>
-                </StackPanel>
+                    <StackPanel Margin="30,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Width="120">
+                        <TextBlock  x:Name="City" Text="-----"  Foreground="White" TextAlignment="Left" Margin="3"/>
+                        <TextBlock x:Name="Date" Text="-----" Foreground="White" Margin="3"/>
+                    </StackPanel>
                 </StackPanel>
             </SplitView.Content>
 
@@ -115,6 +115,6 @@
                 </StackPanel>
             </SplitView.Pane>
         </SplitView>
-
+        
     </StackPanel>
 </UserControl>
