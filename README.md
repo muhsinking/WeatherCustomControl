@@ -3,7 +3,7 @@ A custom UWP weather control using APIs from [OpenWeatherMap](https://www.openwe
 
 This sample demonstrates how to:
 + Create a custom UserControl
-+ Create and use custom Acrylic brushes
-+ Add the Reveal effect to a button control
-+ Retrieve weather data from the OpenWeatherMap APIs
-+ Deserialize json data using Json.NET
++ Create and use custom [Acrylic](https://docs.microsoft.com/en-us/windows/uwp/style/acrylic) brushes
++ Add the [Reveal](https://docs.microsoft.com/en-us/windows/uwp/style/reveal) effect to a button control
++ Retrieve weather data from the [OpenWeatherMap](https://www.openweathermap.org/) APIs
++ Deserialize json data using [Json.NET](https://www.newtonsoft.com/json)
