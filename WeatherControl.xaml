@@ -10,14 +10,11 @@
     d:DesignWidth="500">
 
     <UserControl.Resources>
-        <!--<Color x:Key="IconColor" Color="#555555" />-->
-        <!--<Color x:Key="OptionsBrush" Color="#555555" />-->
 
         <ResourceDictionary>
             <Color x:Key="InfoColor">#000000</Color>
             <Color x:Key="IconColor">#000000</Color>
             <Color x:Key="OptionsColor">#000000</Color>
-
 
             <ResourceDictionary.ThemeDictionaries>
                 
