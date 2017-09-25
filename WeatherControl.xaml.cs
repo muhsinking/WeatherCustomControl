@@ -107,25 +107,16 @@ namespace WeatherCustomControl
             }
         }
 
-
-        // Update the icon photo based on the icon ID
-        /* 
-         * TODO look up icon source with hashset
-         * TODO filename convention: 
-         * 01   icon-clear.png
-         * 02   icon-fewclouds
-         * 03   icon-scattered-clouds
-         * 04   icon-broken-clouds
-         * 09   icon-shower-rain
-         * 10   icon-rain
-         * 11   icon-thunderstorm
-         * 13   icon-snow
-         * 50   icon-mist
-        */
-
         public void UpdateIcon(String iconID)
         {
+            // Uncomment the code below to use the default OpenWeatherMap icons
+
             //String imageURI = "http://openweathermap.org/img/w/" + iconID + ".png";
+            //var bitmapImage = new BitmapImage();
+            //bitmapImage.UriSource = new Uri(imageURI);
+            //IconImage.Source = bitmapImage;
+            //return;
+
             String iconAssetName;
             Debug.WriteLine(iconID);
 
@@ -183,9 +174,6 @@ namespace WeatherCustomControl
 
             IconImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/WeatherIcons/" + iconAssetName + ".png"));
 
-            //var bitmapImage = new BitmapImage();
-            //bitmapImage.UriSource = new Uri(imageURI);
-            //IconImage.Source = bitmapImage;
         }
 
         public double kelvinToFahrenheit(double kelvin)
