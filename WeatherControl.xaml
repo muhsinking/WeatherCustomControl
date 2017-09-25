@@ -10,26 +10,35 @@
     d:DesignWidth="500">
 
     <UserControl.Resources>
+        <!--<Color x:Key="IconColor" Color="#555555" />-->
+        <!--<Color x:Key="OptionsBrush" Color="#555555" />-->
+
         <ResourceDictionary>
+            <Color x:Key="InfoColor">#000000</Color>
+            <Color x:Key="IconColor">#000000</Color>
+            <Color x:Key="OptionsColor">#000000</Color>
+
+
             <ResourceDictionary.ThemeDictionaries>
+                
                 <ResourceDictionary x:Key="Default">
                     <AcrylicBrush x:Key="IconAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#002041"
+                TintColor="{StaticResource IconColor}"
                 TintOpacity="0.4"
-                FallbackColor="#007FF5"/>
+                FallbackColor="{StaticResource IconColor}"/>
 
                     <AcrylicBrush x:Key="InfoAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#002041"
+                TintColor="{StaticResource InfoColor}"
                 TintOpacity="0.6"
-                FallbackColor="#002041"/>
+                FallbackColor="{StaticResource InfoColor}"/>
 
                     <AcrylicBrush x:Key="OptionsAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#002041"
+                TintColor="{StaticResource OptionsColor}"
                 TintOpacity="0.4"
-                FallbackColor="#002041"/>
+                FallbackColor="{StaticResource OptionsColor}"/>
                 </ResourceDictionary>
 
                 <ResourceDictionary x:Key="HighContrast">
@@ -46,21 +55,21 @@
                 <ResourceDictionary x:Key="Light">
                     <AcrylicBrush x:Key="IconAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#002041"
+                TintColor="{StaticResource IconColor}"
                 TintOpacity="0.4"
-                FallbackColor="#002041"/>
+                FallbackColor="{StaticResource IconColor}"/>
                     
                     <AcrylicBrush x:Key="InfoAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#002041"
+                TintColor="{StaticResource InfoColor}"
                 TintOpacity="0.6"
-                FallbackColor="#002041"/>
+                FallbackColor="{StaticResource InfoColor}"/>
 
                     <AcrylicBrush x:Key="OptionsAcrylicBrush"
                 BackgroundSource="Backdrop"
-                TintColor="#002041"
+                TintColor="{StaticResource OptionsColor}"
                 TintOpacity="0.4"
-                FallbackColor="#002041"/>
+                FallbackColor="{StaticResource OptionsColor}"/>
                 </ResourceDictionary>
 
             </ResourceDictionary.ThemeDictionaries>

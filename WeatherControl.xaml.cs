@@ -78,7 +78,7 @@ namespace WeatherCustomControl
 
                 City.Text = currentWeather.name;
                 Humidity.Text = "Humidity: " + currentWeather.main.humidity.ToString() + "%";
-                UpdateIcon("http://openweathermap.org/img/w/" + currentWeather.weather[0].icon + ".png");
+                UpdateIcon(currentWeather.weather[0].icon);
             }
 
             // If data is not found, display "no connection" icon
@@ -123,13 +123,71 @@ namespace WeatherCustomControl
          * 50   icon-mist
         */
 
-        public void UpdateIcon(String imageURI)
+        public void UpdateIcon(String iconID)
         {
-            var bitmapImage = new BitmapImage();
-            bitmapImage.UriSource = new Uri(imageURI);
-            IconImage.Source = bitmapImage;
+            //String imageURI = "http://openweathermap.org/img/w/" + iconID + ".png";
+            String iconAssetName;
+            Debug.WriteLine(iconID);
+
+            switch (iconID)
+            {
+                case "01d":
+                    iconAssetName = "icon-sunny";
+                    break;
+                case "o1n":
+                    iconAssetName = "icon-night-clear";
+                    break;
+                case "02d":
+                    iconAssetName = "icon-sunny-fewclouds";
+                    break;
+                case "02n":
+                    iconAssetName = "icon-night-fewclouds";
+                    break;
+                case "03d":
+                    iconAssetName = "icon-sunny-scatteredclouds";
+                    break;
+                case "03n":
+                    iconAssetName = "icon-night-scatteredclouds";
+                    break;
+                case "04d":
+                case "04n":
+                    iconAssetName = "icon-brokenclouds";
+                    break;
+                case "09d":
+                case "09n":
+                    iconAssetName = "icon-lightrain";
+                    break;
+                case "10d":
+                case "10n":
+                    iconAssetName = "icon-rain";
+                    break;
+                case "11d":
+                case "11n":
+                    iconAssetName = "icon-thunderstorm";
+                    break;
+                case "13d":
+                case "13n":
+                    iconAssetName = "icon-snow";
+                    break;
+                case "50d":
+                case "50n":
+                    iconAssetName = "icon-mist";
+                    break;
+                default:
+                    iconAssetName = "no-internet-3";
+                    break;
+
+            }
+
+            Debug.WriteLine("ms-appx:///Assets/WeatherIcons" + iconAssetName + ".png");
+
+            IconImage.Source = new BitmapImage(new Uri("ms-appx:///Assets/WeatherIcons/" + iconAssetName + ".png"));
+
+            //var bitmapImage = new BitmapImage();
+            //bitmapImage.UriSource = new Uri(imageURI);
+            //IconImage.Source = bitmapImage;
         }
-        
+
         public double kelvinToFahrenheit(double kelvin)
         {
             return 1.8 * (kelvin - 273) + 32;
