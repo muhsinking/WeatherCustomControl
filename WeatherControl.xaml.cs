@@ -111,11 +111,11 @@ namespace WeatherCustomControl
         {
             // Uncomment the code below to use the default OpenWeatherMap icons
 
-            //String imageURI = "http://openweathermap.org/img/w/" + iconID + ".png";
-            //var bitmapImage = new BitmapImage();
-            //bitmapImage.UriSource = new Uri(imageURI);
-            //IconImage.Source = bitmapImage;
-            //return;
+            String imageURI = "http://openweathermap.org/img/w/" + iconID + ".png";
+            var bitmapImage = new BitmapImage();
+            bitmapImage.UriSource = new Uri(imageURI);
+            IconImage.Source = bitmapImage;
+            return;
 
             String iconAssetName;
             Debug.WriteLine(iconID);
